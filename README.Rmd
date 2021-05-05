@@ -8,7 +8,9 @@ output:
   pdf_document: default
 ---
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ## 500yr floodn series
 
@@ -17,8 +19,9 @@ Derrived from
 Blöschl, G., Kiss, A., Viglione, A. et al. Current European flood-rich period exceptional compared with past 500 years. Nature 583, 560–566 (2020). https://doi.org/10.1038/s41586-020-2478-3
 
 
+```{r floods}
 
-```r
+
 allFloods <- read.csv("https://raw.githubusercontent.com/tuwhydro/500yrfloods/master/i_f.csv", sep=",")
 allSites <- read.csv("https://raw.githubusercontent.com/tuwhydro/500yrfloods/master/sites.csv", sep=",")
 allSites <- subset(allSites, allSites$lon4 == "O")
@@ -75,6 +78,7 @@ avgFloods <- avgFloods[order(avgFloods$ts),]
 write.table(avgFloods, file = "csv/floods_de.csv", append = FALSE, quote = TRUE, sep = ",",
             eol = "\n", na = "NA", dec = ".", row.names = FALSE,
             col.names = TRUE, qmethod = "escape", fileEncoding = "UTF-8")
+
 ```
 
 
