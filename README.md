@@ -77,5 +77,32 @@ write.table(avgFloods, file = "csv/floods_de.csv", append = FALSE, quote = TRUE,
             col.names = TRUE, qmethod = "escape", fileEncoding = "UTF-8")
 ```
 
+## Plot Floods
+
+
+```r
+require("ggplot2")
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```r
+floods1500 <- read.csv("./csv/floods_de.csv", sep=",")
+mp <- ggplot() +
+      #geom_line(aes(y=volcano1500$vei, x=volcano1500$time), color="blue") +
+      geom_segment(aes(y=floods1500$fli, yend=0, x=floods1500$ts, xend=floods1500$ts), color="blue") +
+      xlab("Year") + ylab("FLI []")
+mp
+```
+
+![](README_files/figure-html/plot-1.png)<!-- -->
+
+
+
+
+
+
 
 
